@@ -1,0 +1,502 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 100%;
+    --card: 0 0% 3%;
+    --card-foreground: 0 0% 100%;
+    --popover: 0 0% 3%;
+    --popover-foreground: 0 0% 100%;
+    --primary: 252 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 9%;
+    --input: 0 0% 9%;
+    --ring: 252 100% 65%;
+    --radius: 0.75rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    /* Background global propre et élégant */
+    background: radial-gradient(circle at 20% 20%, rgba(90, 79, 255, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(90, 79, 255, 0.1) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(122, 111, 255, 0.08) 0%, transparent 50%),
+      linear-gradient(135deg, #000000 0%, #0a0a20 25%, #000000 50%, #0a0a20 75%, #000000 100%);
+    background-attachment: fixed;
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%;
+    min-height: 100vh;
+  }
+
+  /* Restaurer le curseur par défaut sur les appareils tactiles */
+  @media (hover: none) {
+    body {
+      cursor: auto;
+    }
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove any default margins that could cause gaps */
+body,
+main,
+section {
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure sections connect seamlessly - PLUS DE BACKGROUNDS */
+section {
+  position: relative;
+  z-index: 1;
+  background: transparent !important; /* Force la transparence */
+}
+
+/* Mobile responsive improvements */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Enhanced mobile glow effect with rounded corners */
+@media (max-width: 768px) {
+  .mobile-illuminate {
+    animation: mobileGlowEnhanced 3s ease-in-out;
+    position: relative;
+    overflow: visible;
+  }
+
+  .mobile-illuminate::before {
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 1.75rem; /* Matches rounded-3xl */
+    background: linear-gradient(
+      45deg,
+      var(--glow-color, rgba(90, 79, 255, 0.6)),
+      transparent,
+      var(--glow-color, rgba(90, 79, 255, 0.6))
+    );
+    z-index: -1;
+    animation: rotateGlow 3s ease-in-out;
+    filter: blur(8px);
+  }
+
+  .mobile-illuminate::after {
+    content: "";
+    position: absolute;
+    inset: -6px;
+    border-radius: 1.75rem;
+    background: radial-gradient(circle, var(--glow-color, rgba(90, 79, 255, 0.3)) 0%, transparent 70%);
+    z-index: -2;
+    animation: pulseGlow 3s ease-in-out;
+    filter: blur(15px);
+  }
+
+  @keyframes mobileGlowEnhanced {
+    0% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+    25% {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+    50% {
+      transform: scale(1.05);
+      filter: brightness(1.2);
+    }
+    75% {
+      transform: scale(1.02);
+      filter: brightness(1.1);
+    }
+    100% {
+      transform: scale(1);
+      filter: brightness(1);
+    }
+  }
+
+  @keyframes rotateGlow {
+    0% {
+      opacity: 0;
+      transform: rotate(0deg) scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: rotate(180deg) scale(1.1);
+    }
+    100% {
+      opacity: 0;
+      transform: rotate(360deg) scale(0.8);
+    }
+  }
+
+  @keyframes pulseGlow {
+    0% {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    50% {
+      opacity: 0.8;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.4);
+    }
+  }
+
+  /* Icon pulse effect */
+  .mobile-icon-pulse {
+    animation: iconPulse 2s ease-in-out;
+  }
+
+  @keyframes iconPulse {
+    0%,
+    100% {
+      transform: scale(1) rotate(0deg);
+    }
+    25% {
+      transform: scale(1.1) rotate(5deg);
+    }
+    50% {
+      transform: scale(1.2) rotate(-5deg);
+    }
+    75% {
+      transform: scale(1.1) rotate(3deg);
+    }
+  }
+
+  /* Floating particles animation */
+  @keyframes floatUp {
+    0% {
+      opacity: 0;
+      transform: translateY(0) scale(0);
+    }
+    20% {
+      opacity: 1;
+      transform: translateY(-10px) scale(1);
+    }
+    80% {
+      opacity: 1;
+      transform: translateY(-40px) scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-60px) scale(0);
+    }
+  }
+}
+
+/* Animations fluides sans carrés */
+.animate-fade-in {
+  animation: fadeInSmooth 1.2s ease-out forwards;
+}
+
+@keyframes fadeInSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUpSmooth 1s ease-out forwards;
+}
+
+@keyframes fadeInUpSmooth {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 3s linear infinite;
+}
+
+/* Stagger animations */
+.stagger-child {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.8s ease-out;
+}
+
+.stagger-child.animate-fade-in-up {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button shimmer effect */
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Mobile menu improvements */
+.mobile-menu-container {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+/* Amélioration des performances du menu mobile */
+@media (max-width: 768px) {
+  .menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Amélioration des performances de transition */
+  .mobile-menu-container {
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .mobile-menu-container.translate-x-0 {
+    transform: translateX(0);
+  }
+
+  /* Amélioration des zones tactiles */
+  .mobile-menu-container a,
+  .mobile-menu-container button {
+    min-height: 44px;
+    min-width: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Effet de pression sur mobile */
+  .mobile-menu-container a:active,
+  .mobile-menu-container button:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Correction du z-index pour le menu mobile */
+.menu-button {
+  z-index: 60 !important;
+}
+
+/* Animation améliorée pour les lignes du burger */
+.menu-button span {
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+/* Touch improvements for mobile */
+@media (max-width: 768px) {
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  .mobile-glow:active {
+    transform: scale(0.98);
+  }
+}
+
+/* Enhanced shine effect */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%) skewX(-15deg);
+    opacity: 0;
+  }
+  50% {
+    transform: translateX(0%) skewX(-15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) skewX(-15deg);
+    opacity: 0;
+  }
+}
+
+.shine-effect {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+}
+
+.animate-slide-up {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Menu burger animations */
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+/* Prevent horizontal scroll on mobile menu */
+@media (max-width: 768px) {
+  body.menu-open {
+    overflow-x: hidden;
+  }
+}
+
+/* Smooth transitions for mobile menu */
+.mobile-menu-container {
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Hover effects for menu items */
+@media (hover: hover) {
+  .mobile-menu-container a:hover {
+    transform: translateX(4px);
+  }
+}
+
+/* Parallax effect */
+[data-parallax] {
+  will-change: transform;
+}
+
+/* Animation de chargement */
+.fade-out {
+  animation: fadeOut 1s forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* Animation d'expansion */
+.animate-expand {
+  animation: expand 2s ease-in-out infinite;
+}
+
+@keyframes expand {
+  0%,
+  100% {
+    width: 0;
+    left: 50%;
+    right: 50%;
+  }
+  50% {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* Animation de flottement */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Effet 3D pour la carte de visite - AMÉLIORÉ */
+.perspective-1000 {
+  perspective: 1500px; /* Augmenté pour plus d'effet */
+}
+
+.transform-3d {
+  transform-style: preserve-3d;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* Effet 3D plus prononcé */
+.card-3d-enhanced {
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease-out;
+}
+
+.card-3d-enhanced:hover {
+  transform: translateZ(50px) scale(1.05);
+}
+
+/* Overlay subtil pour améliorer la lisibilité */
+.content-overlay {
+  position: relative;
+}
+
+.content-overlay::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
+  pointer-events: none;
+  z-index: -1;
+}
