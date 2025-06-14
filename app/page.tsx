@@ -8,13 +8,18 @@ import { Footer } from "@/components/footer"
 import { Navbar } from "@/components/navbar"
 import { ScrollAnimations } from "@/components/scroll-animations"
 import { MobileScrollEffects } from "@/components/mobile-scroll-effects"
-import { CustomCursor } from "@/components/custom-cursor"
 import { ParallaxEffect } from "@/components/parallax-effect"
 import { AnimatedBackground } from "@/components/animated-background"
 import { ScrollProgress } from "@/components/scroll-progress"
 import { LoadingAnimation } from "@/components/loading-animation"
 import { ProcessTimeline } from "@/components/process-timeline"
 import { CodeShowcase } from "@/components/code-showcase"
+import dynamic from "next/dynamic"
+
+// Dynamically import CustomCursor with SSR disabled to prevent hydration mismatch
+const CustomCursor = dynamic(() => import("@/components/custom-cursor").then(mod => ({ default: mod.CustomCursor })), {
+  ssr: false
+})
 
 export default function Home() {
   return (
