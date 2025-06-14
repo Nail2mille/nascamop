@@ -343,10 +343,3 @@ export function ProcessTimeline() {
     </section>
   )
 }
-// Dans le style jsx à la fin du composant, ajouter :
-;<style jsx>{`
-  .animate-fade-in {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-`}</style>
